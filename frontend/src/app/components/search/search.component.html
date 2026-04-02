@@ -1,21 +1,44 @@
 <div class="search-container">
-    <h2>Upload New Document</h2>
-    <input [(ngModel)]="fileName" placeholder="File name (e.g. news.txt)">
-    <textarea [(ngModel)]="content" placeholder="Content..."></textarea>
-    <button (click)="onUpload()">Upload & Vectorize</button>
+    <section class="card">
+        <h2>Document Ingestion</h2>
+
+        <div class="upload-options">
+            <div class="option-box">
+                <label>Option 1: Upload File</label>
+                <input type="file" (change)="onFileSelected($event)" accept=".txt">
+                <p *ngIf="selectedFile" class="file-info">Ready to send: {{selectedFile.name}}</p>
+            </div>
+
+            <div class="divider"><span>OR</span></div>
+
+            <div class="option-box">
+                <label>Option 2: Manual Entry</label>
+                <input [(ngModel)]="manualFileName" placeholder="Document Name">
+                <textarea [(ngModel)]="manualContent" placeholder="Paste text content..."></textarea>
+            </div>
+        </div>
+
+        <button (click)="onUpload()" [disabled]="isProcessing" class="upload-btn">
+            {{ isProcessing ? 'Uploading...' : 'Save to Vector DB' }}
+        </button>
+    </section>
+
+    <p class="status-msg" [class.error]="status.includes('❌')">{{ status }}</p>
 
     <hr>
 
-    <h2>Semantic Search</h2>
-    <div class="row">
-        <input [(ngModel)]="query" placeholder="Search concept (e.g. 'transportation')">
-        <button (click)="onSearch()">Search</button>
-    </div>
+    <section class="card">
+        <h2>Semantic Search</h2>
+        <div class="search-bar">
+            <input [(ngModel)]="query" (keyup.enter)="onSearch()" placeholder="Ask anything...">
+            <button (click)="onSearch()" [disabled]="isProcessing">Search</button>
+        </div>
+    </section>
 
-    <p class="status">{{ status }}</p>
-
-    <div *ngFor="let doc of results" class="result-card">
-        <h3>{{ doc.fileName }}</h3>
-        <p>{{ doc.content }}</p>
+    <div class="results" *ngIf="results.length > 0">
+        <div class="result-card" *ngFor="let doc of results">
+            <h3>📄 {{ doc.fileName }}</h3>
+            <p>{{ doc.content }}</p>
+        </div>
     </div>
 </div>
