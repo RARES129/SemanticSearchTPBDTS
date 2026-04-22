@@ -4,8 +4,6 @@
 
 Aplicația demonstrează căutarea semantică peste documente text cu Oracle AI Vector Search. În loc să caute doar cuvinte exacte, sistemul transformă fragmentele de text și query-ul utilizatorului în vectori și caută fragmente apropiate ca sens.
 
-Tema acoperită: **Semantic Search peste documente text**.
-
 ## 2. Componente
 
 | Componentă | Tehnologie | Rol |

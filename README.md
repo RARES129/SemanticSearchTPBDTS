@@ -6,19 +6,18 @@ Proiectul permite încărcarea de fișiere PDF, TXT și Markdown, extrage textul
 
 ## Cuprins
 
-- [Funcționalități implementate](#functionalitati-implementate)
-- [Arhitectură](#arhitectura)
+- [Funcționalități implementate](#funcționalități-implementate)
+- [Arhitectură](#arhitectură)
 - [Model de date](#model-de-date)
 - [Flux de procesare](#flux-de-procesare)
-- [Căutare semantică, keyword și hibridă](#cautare-semantica-keyword-si-hibrida)
+- [Căutare semantică, keyword și hibridă](#căutare-semantică-keyword-și-hibridă)
 - [Re-ranking local](#re-ranking-local)
-- [Configurare și rulare](#configurare-si-rulare)
+- [Configurare și rulare](#configurare-și-rulare)
 - [Endpoint-uri API](#endpoint-uri-api)
 - [Dovezi de rulare](#dovezi-de-rulare)
-- [Scenariu demo](#scenariu-demo)
 - [Slide-uri prezentare](#slide-uri-prezentare)
-- [Limitări și posibile extinderi](#limitari-si-posibile-extinderi)
-- [Referințe](#referinte)
+- [Limitări și posibile extinderi](#limitări-și-posibile-extinderi)
+- [Referințe](#referințe)
 
 ## Funcționalități Implementate
 
@@ -77,7 +76,7 @@ SemanticSearchTPBDTS/
       services/           client HTTP
   docs/
     assets/               capturi de ecran pentru documentație
-    DEMO_SCENARIU_10_MIN.md
+    SemanticSearch.pdf    prezentare PowerPoint pentru demo
 ```
 
 Backend-ul expune un API REST pe `http://localhost:8081`, iar frontend-ul rulează pe `http://localhost:4200`.
@@ -346,34 +345,14 @@ Exemplu de căutare hibridă cu scoruri, highlight semantic și explicație de r
 }
 ```
 
-## Scenariu Demo
-
-Scenariul complet pentru prezentarea de 10 minute este în:
-
-[docs/DEMO_SCENARIU_10_MIN.md](docs/DEMO_SCENARIU_10_MIN.md)
-
-Pe scurt, demo-ul urmărește:
-
-1. prezentarea problemei;
-2. încărcarea/indexarea documentelor;
-3. inspectarea chunk-urilor și metadatelor;
-4. compararea semantic vs keyword;
-5. rularea căutării hibride;
-6. activarea/dezactivarea re-ranking-ului;
-7. filtrarea pe document și agregarea pe document;
-8. interpretarea scorurilor și a rezultatelor.
-
 ## Slide-uri Prezentare
 
-Deck-ul de 2 slide-uri pentru introducerea proiectului este în:
-
-[docs/slides/semantic-search-demo/output.pptx](docs/slides/semantic-search-demo/output.pptx)
+Prezentarea PowerPoint folosită pentru demo este disponibilă aici: [docs/SemanticSearch.pdf](docs/SemanticSearch.pdf)
 
 ## Limitări Și Posibile Extinderi
 
 Limitări:
 
-- Nu există autentificare sau roluri.
 - Pentru PDF-uri scanate este necesar OCR; PDFBox extrage doar text digital.
 - Modelul de embeddings este local și mic, bun pentru demo, dar mai slab decât modele comerciale mari.
 - Highlight-ul semantic presupune embeddings suplimentare pe propoziții, deci poate crește timpul de răspuns.

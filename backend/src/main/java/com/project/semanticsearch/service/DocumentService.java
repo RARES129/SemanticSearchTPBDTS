@@ -36,8 +36,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class DocumentService {
-    private static final int CHUNK_SIZE = 900;
-    private static final int CHUNK_OVERLAP = 160;
+    private static final int CHUNK_SIZE = 700;
+    private static final int CHUNK_OVERLAP = 150;
     private static final int MIN_LIMIT = 1;
     private static final int MAX_LIMIT = 25;
     private static final int MAX_HIGHLIGHTED_SENTENCES = 2;
